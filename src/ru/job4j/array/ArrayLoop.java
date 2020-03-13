@@ -4,7 +4,8 @@ public class ArrayLoop {
     public static void main(String[] args) {
         int[] numbers = new int[5];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = i;
+            int y = i * 2 + 3;
+            numbers[i] = y;
         }
         for (int i = 0; i < numbers.length; i++) {
             System.out.println(numbers[i]);
