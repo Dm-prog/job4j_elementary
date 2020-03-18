@@ -10,7 +10,9 @@ public class Mortgage {
             balance = amount - salary;
             year++;
             balance = balance * percent + balance;
-            if (balance < 0) break;
+            if (balance < 0) {
+                break;
+            }
             amount = (int) balance;
         }
         return year;
