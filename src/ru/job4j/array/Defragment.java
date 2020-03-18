@@ -7,7 +7,7 @@ public class Defragment {
                 int point = index;
                 array[point] = array[point + 1];
                 while (array[point] == array[point + 1]) {
-
+                    System.out.println();
                 }
             }
             System.out.print(array[index] + " ");
