@@ -4,16 +4,13 @@ import java.util.Arrays;
 
 public class Merge {
     public int[] merge(int[] left, int[] right) {
+        int iLeft = 0;
+        int iRigth = 0;
+        int iResult = 0;
         int[] rsl = new int[left.length + right.length];
-            for (int i = 0; i < rsl.length / 2; i++) {
-                if (left[i] > right[i]) {
-                    rsl[i + i] = right[i];
-                    rsl[i + i + 1] = left[i];
-                } else {
-                    rsl[i + i] = left[i];
-                    rsl[i + i + 1] = right[i];
-                }
-            }
+        while (iResult < rsl.length) {
+
+        }
         return rsl;
     }
 
