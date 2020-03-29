@@ -1,25 +1,29 @@
 package ru.job4j.sort;
 
-import java.util.Arrays;
-
 public class Merge {
     public int[] merge(int[] left, int[] right) {
-        int iLeft = 0;
-        int iRigth = 0;
-        int iResult = 0;
-        int[] rsl = new int[left.length + right.length];
-        while (iResult < rsl.length) {
-
+        int[] rls = new int[left.length + right.length];
+        int i = 0;
+        int j = 0;
+        for(int k = 0; k != rls.length; k += 1) {
+            if((i != left.length) && (j == right.length)) {
+                rls[k] = left[i++];
+                continue;
+            }
+            if((i != left.length) && (j != right.length)) {
+                if((left[i] < right[j])) {
+                    rls[k] = left[i++];
+                    continue;
+                } else {
+                    rls[k] = right[j++];
+                    continue;
+                }
+            }
+            if((i == left.length) && (j != right.length)) {
+                rls[k] = right[j++];
+                continue;
+            }
         }
-        return rsl;
-    }
-
-    public static void main(String[] args) {
-        Merge process = new Merge();
-        int[] rsl = process.merge(
-                new int[]{1, 3, 5},
-                new int[]{2, 4}
-        );
-        System.out.println(Arrays.toString(rsl));
+        return(rls);
     }
 }
