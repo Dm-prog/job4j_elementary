@@ -2,28 +2,35 @@ package ru.job4j.sort;
 
 public class Merge {
     public int[] merge(int[] left, int[] right) {
-        int[] rls = new int[left.length + right.length];
-        int i = 0;
-        int j = 0;
-        for(int k = 0; k != rls.length; k += 1) {
-            if((i != left.length) && (j == right.length)) {
-                rls[k] = left[i++];
-                continue;
+        int[] result = new int[left.length + right.length];
+        int fstIndex = 0;
+        int sndIndex = 0;
+        int index = 0;
+
+        while (fstIndex<left.length && sndIndex<right.length){
+
+            if(left[fstIndex]<right[sndIndex]){
+                result[index]=left[fstIndex];
+                fstIndex++;
             }
-            if((i != left.length) && (j != right.length)) {
-                if((left[i] < right[j])) {
-                    rls[k] = left[i++];
-                    continue;
-                } else {
-                    rls[k] = right[j++];
-                    continue;
-                }
+            else{
+                result[index]=right[sndIndex];
+                sndIndex++;
             }
-            if((i == left.length) && (j != right.length)) {
-                rls[k] = right[j++];
-                continue;
-            }
+            index++;
         }
-        return(rls);
+
+        while (fstIndex<left.length){
+            result[index]=left[fstIndex];
+            fstIndex++;
+            index++;
+        }
+
+        while (sndIndex<right.length){
+            result[index]=right[sndIndex];
+            sndIndex++;
+            index++;
+        }
+        return result;
     }
 }
