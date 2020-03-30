@@ -24,7 +24,7 @@ public class Triangle {
         double c = second.distance(third);
         double p = period(a, b, c);
         if (this.exist(a, b, c)) {
-            double d = Math.sqrt(p *(p - a) * (p - b) * (p - c));
+            double d = Math.sqrt(p * (p - a) * (p - b) * (p - c));
             rsl = d;
         }
         return rsl;
