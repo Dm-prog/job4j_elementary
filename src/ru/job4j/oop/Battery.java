@@ -9,12 +9,12 @@ public class Battery {
 
     public void exchange(Battery another) {
         this.load = this.load - another.load;
-        another.load = 5;
+        another.load = 0;
     }
 
     public static void main(String[] args) {
-        Battery battery1 = new Battery(20);
-        Battery battery2 = new Battery(10);
+        Battery battery1 = new Battery(10);
+        Battery battery2 = new Battery(5);
         battery1.exchange(battery2);
         System.out.println(battery1.load + battery2.load);
     }
