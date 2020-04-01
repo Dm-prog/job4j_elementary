@@ -2,8 +2,10 @@ package ru.job4j.condition;
 
 public class Max {
     public static int max(int one, int two) {
-        boolean max = true;
-        return max ? two : one;
+        if (two > one) {
+            return two;
+        }
+        return one;
     }
 
     public static int max(int one, int two, int three) {

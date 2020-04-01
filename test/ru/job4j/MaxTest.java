@@ -13,12 +13,6 @@ public class MaxTest {
     }
 
     @Test
-    public void whenMin1To2Then2() {
-        int result2 = Max.max(2, 1);
-        assertThat(result2, is(1));
-    }
-
-    @Test
     public void whenQually() {
         int result = Max.max(2, 2);
         assertThat(result, is(2));
