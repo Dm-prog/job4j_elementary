@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker {
-    /**
-     * Массив для хранение заявок.
-     */
+
     private final Item[] items = new Item[100];
     private Item[] namesWithoutNull = new Item[items.length];
 
