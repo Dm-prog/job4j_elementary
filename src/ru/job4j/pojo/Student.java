@@ -3,9 +3,9 @@ package ru.job4j.pojo;
 import java.util.Date;
 
 public class Student {
-    String namePatronymicSurname;
-    int group;
-    Date dateOfReceipt;
+    private String namePatronymicSurname;
+    private int group;
+    private Date dateOfReceipt;
 
     public String getNamePatronymicSurname() {
         return namePatronymicSurname;
