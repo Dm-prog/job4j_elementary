@@ -43,16 +43,11 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        int size = 0;
-        for (int index = 0; index < items.length; index++) {
-            Item item = items[index];
-            if (item.getId().equals(id)) {
-                namesWithoutNull[size] = item;
-                size++;
-            }
+        Item item = items[position];
+        if (item.getId().equals(id)) {
+            position++;
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull, size);
-        return findById(id);
+        return item;
     }
 
     private String generateId() {
