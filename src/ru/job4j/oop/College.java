@@ -2,10 +2,10 @@ package ru.job4j.oop;
 
 public class College {
     public static void main(String[] args) {
-        Freshman fr = new Freshman();
-        Student st = fr;
-        Object o = fr;
+        Student s = new Freshman();
+        Freshman freshFromStudent = (Freshman) s;
+
         Object object = new Freshman();
-        Freshman freshman = (Freshman) object;
+        Freshman freshFromObject = (Freshman) object;
     }
 }
