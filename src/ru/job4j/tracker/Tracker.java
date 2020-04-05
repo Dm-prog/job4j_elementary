@@ -34,19 +34,30 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        Item item = null;
-        for (int index = 0; index < position; index++) {
-            Item current = items[index];
-            if (current.getId().equals(id)) {
-                item = current;
-                break;
-            }
-        }
-        return item;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     private String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
+    }
+
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    public boolean replace(String id, Item item) {
+        for (int index = 0; index < position; index++) {
+            indexOf(id);
+        }
+        return true;
     }
 }
