@@ -34,8 +34,8 @@ public class StartUI {
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
                 System.out.print("Enter name: ");
-                String name = scanner.nextLine();
-                tracker.delete(name);
+                String id = scanner.nextLine();
+                tracker.delete(id);
             } else if (select == 5) {
                 System.out.println("=== Find items by name ====");
                 System.out.print("Enter name: ");
