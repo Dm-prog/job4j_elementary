@@ -67,8 +67,8 @@ public class Tracker {
 
     public boolean delete(String id) {
         int index = indexOf(id);
+        Item[] result = new Item[position];
         if (index != -1) {
-            Item[] result = new Item[position];
             int start = index + 1;
             int distPos = index;
             int size = position - index;
