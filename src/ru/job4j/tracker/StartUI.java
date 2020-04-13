@@ -22,27 +22,38 @@ public class StartUI {
                 for (Item i : result) {
                     System.out.println(i);
                 }
-            } else if (tracker.replace("", new Item(""))) {
-                System.out.println("The replacement was made successfully");
-            } else {
-                System.out.println("No replacement can be made");
-            }
-
-            if (tracker.delete("")) {
-                System.out.println("Deletion was performed successfully");
-            } else {
-                System.out.print("deletion cannot be performed");
-            }
-            if (select == 4) {
+            } else if (select == 2) {
+                if (tracker.replace("", new Item(""))) {
+                    String id = scanner.nextLine();
+                    Item name = new Item(scanner.nextLine());
+                    tracker.replace(id, name);
+                    System.out.println("The replacement was made successfully");
+                } else {
+                    System.out.println("No replacement can be made");
+                }
+            } else if (select == 3) {
+                if (tracker.delete("")) {
+                    System.out.println("Deletion was performed successfully");
+                } else {
+                    System.out.print("deletion cannot be performed");
+                }
+            } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
                 System.out.print("Enter Id: ");
                 String id = scanner.nextLine();
-                tracker.findById(id);
+                if (tracker.findById(id).equals(id)) {
+                    System.out.println("The item was found");
+                } else {
+                    System.out.println("The item was not found");
+                }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ====");
                 Item[] result = tracker.findByName("");
+                Item key = new Item(scanner.nextLine());
                 for (Item i : result) {
-                    System.out.println(i);
+                    if (i.equals(key)) {
+                        System.out.println(i);
+                    }
                 }
             } else if (select == 6) {
                 run = false;
@@ -51,12 +62,9 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println("Menu.");
-        System.out.println("Show all items");
-        System.out.println("Edit item");
-        System.out.println("Delete item");
-        System.out.println("Find item by Id");
-        System.out.println("Find items by name");
+        for (int i = 0; i < 6; i++) {
+            System.out.println("select menu item: " + i);
+        }
     }
 
 
