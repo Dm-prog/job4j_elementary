@@ -4,15 +4,20 @@ public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
         for (int i = 0; i < users.length; i++) {
-            if (users[i] == null) {
-                throw new UserNotFoundException();
+            if (users[i].equals(login)) {
+                break;
             }
         }
-        return null;
+        throw new UserNotFoundException();
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid() && user.getUsername().length() < 3) {
+        if (user.isValid()) {
+            System.out.println("Пользователь не валидный");
+            throw new UserInvalidException();
+        }
+        if (user.getUsername().length() < 3) {
+            System.out.println("Имя пользователя состоит из менее трех символов");
             throw new UserInvalidException();
         }
         return false;
@@ -33,7 +38,7 @@ public class UserStore {
                 System.out.println("This user has an access");
             }
         } catch (UserInvalidException e) {
-            System.out.println("the user is not valid");
+            System.out.println("The user is not valid");
         }
     }
 }
