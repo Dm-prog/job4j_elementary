@@ -7,8 +7,9 @@ public class UserStore {
             if (users[i].equals(login)) {
                 break;
             }
+            throw new UserNotFoundException();
         }
-        throw new UserNotFoundException();
+        return null;
     }
 
     public static boolean validate(User user) throws UserInvalidException {
