@@ -12,7 +12,10 @@ public class FindEl {
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
         for (String st : value) {
-            System.out.println(st);
+            if (st.equals(key)) {
+                System.out.println(st);
+            }
+            throw new ElementNotFoundException();
         }
         return rsl;
     }
