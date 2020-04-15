@@ -15,6 +15,8 @@ public class FindEl {
             if (st.equals(key)) {
                 System.out.println(st);
             }
+        }
+        if (rsl == -1) {
             throw new ElementNotFoundException();
         }
         return rsl;
