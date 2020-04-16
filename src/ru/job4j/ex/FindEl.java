@@ -14,6 +14,8 @@ public class FindEl {
         for (String st : value) {
             if (st.equals(key)) {
                 System.out.println(st);
+                rsl++;
+                break;
             }
         }
         if (rsl == -1) {
