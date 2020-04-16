@@ -7,6 +7,7 @@ public class UserStore {
         for (int i = 0; i < users.length; i++) {
             if (users[i].equals(login)) {
                 user = login;
+                break;
             }
         }
         if (user == null) {
@@ -24,7 +25,7 @@ public class UserStore {
             System.out.println("Имя пользователя состоит из менее трех символов");
             throw new UserInvalidException();
         }
-        return false;
+        return true;
     }
 
     public static void main(String[] args) {
