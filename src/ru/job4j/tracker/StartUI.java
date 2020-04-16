@@ -18,7 +18,7 @@ public class StartUI {
         }
     }
 
-    public static void createReplace(Input input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         if (tracker.replace("", new Item(""))) {
             String id = input.askStr(msg);
             Item name = new Item(input.askStr(msg));
@@ -29,7 +29,7 @@ public class StartUI {
         }
     }
 
-    public static void createDelete(Tracker tracker) {
+    public static void deleteItem(Tracker tracker) {
         if (tracker.delete("")) {
             System.out.println("Deletion was performed successfully");
         } else {
@@ -71,9 +71,9 @@ public class StartUI {
             } else if (select == 1) {
                 StartUI.createFindAll(tracker);
             } else if (select == 2) {
-                StartUI.createReplace(input, tracker);
+                StartUI.replaceItem(input, tracker);
             } else if (select == 3) {
-                StartUI.createDelete(tracker);
+                StartUI.deleteItem(tracker);
             } else if (select == 4) {
                 StartUI.createFindById(input, tracker);
             } else if (select == 5) {
