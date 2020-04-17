@@ -13,7 +13,7 @@ public class UserStore {
         if (user == null) {
             throw new UserNotFoundException();
         }
-        return new User(user, true);
+        return findUser(users, login);
     }
 
     public static boolean validate(User user) throws UserInvalidException {
@@ -32,18 +32,16 @@ public class UserStore {
         User[] users = {
                 new User("Petr Arsentev", true)
         };
-        User user = null;
+        User user;
         try {
             user = findUser(users, "Petr Arsentev");
-        } catch (UserNotFoundException e) {
-            System.out.println("User not found");
-        }
-        try {
             if (validate(user)) {
                 System.out.println("This user has an access");
             }
         } catch (UserInvalidException e) {
             System.out.println("The user is not valid");
+        } catch (UserNotFoundException e) {
+            System.out.println("User not found");
         }
     }
 }
