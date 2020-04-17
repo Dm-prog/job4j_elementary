@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 
 public class StartUI {
-    private static String msg = "";
+    private static String msg = "question";
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -19,7 +19,7 @@ public class StartUI {
     }
 
     public static void replaceItem(Input input, Tracker tracker) {
-        if (tracker.replace("", new Item(""))) {
+        if (tracker.replace("id", new Item("Ivan"))) {
             String id = input.askStr(msg);
             Item name = new Item(input.askStr(msg));
             tracker.replace(id, name);
@@ -30,7 +30,7 @@ public class StartUI {
     }
 
     public static void deleteItem(Tracker tracker) {
-        if (tracker.delete("")) {
+        if (tracker.delete("id")) {
             System.out.println("Deletion was performed successfully");
         } else {
             System.out.print("deletion cannot be performed");
@@ -50,7 +50,7 @@ public class StartUI {
 
     public static void createFfindByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ====");
-        Item[] result = tracker.findByName("");
+        Item[] result = tracker.findByName(msg);
         Item key = new Item(input.askStr(msg));
         for (Item i : result) {
             if (i.equals(key)) {
