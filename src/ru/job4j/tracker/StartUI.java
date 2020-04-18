@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
     private static String msg = "question";
+
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -19,10 +20,9 @@ public class StartUI {
     }
 
     public static void replaceItem(Input input, Tracker tracker) {
-        if (tracker.replace("id", new Item("Ivan"))) {
-            String id = input.askStr(msg);
-            Item name = new Item(input.askStr(msg));
-            tracker.replace(id, name);
+        String id = input.askStr("Enter id: ");
+        String name = input.askStr("Enter name: ");
+        if (tracker.replace(id, new Item(name))) {
             System.out.println("The replacement was made successfully");
         } else {
             System.out.println("No replacement can be made");
@@ -30,7 +30,8 @@ public class StartUI {
     }
 
     public static void deleteItem(Input input, Tracker tracker) {
-        if (tracker.delete("id")) {
+        String id = input.askStr("Enter id: ");
+        if (tracker.delete(id)) {
             System.out.println("Deletion was performed successfully");
         } else {
             System.out.print("deletion cannot be performed");
@@ -39,25 +40,21 @@ public class StartUI {
 
     public static void createFindById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
-        System.out.print("Enter Id: ");
         String id = input.askStr(msg);
-        if (tracker.findById(id).equals(id)) {
-            System.out.println("The item was found");
+        Item found = tracker.findById(id);
+        if (found != null) {
+            System.out.println(found);
         } else {
             System.out.println("The item was not found");
         }
     }
 
-    public static void createFfindByName(Input input, Tracker tracker) {
+    public static void createFindByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ====");
-        Item[] result = tracker.findByName(msg);
-        Item key = new Item(input.askStr(msg));
+        String key = input.askStr(msg);
+        Item[] result = tracker.findByName(key);
         for (Item i : result) {
-            if (i.equals(key)) {
-                System.out.println(i);
-            } else {
-                System.out.println("Items not found by name");
-            }
+            System.out.println(i);
         }
     }
 
@@ -77,7 +74,7 @@ public class StartUI {
             } else if (select == 4) {
                 StartUI.createFindById(input, tracker);
             } else if (select == 5) {
-                StartUI.createFfindByName(input, tracker);
+                StartUI.createFindByName(input, tracker);
             } else if (select == 6) {
                 run = false;
             }
