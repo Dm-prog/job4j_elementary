@@ -12,7 +12,12 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public int askInt(String question) {
-        return Integer.valueOf(askStr(question));
+    public int askInt(String question, int max) {
+        int select = askInt(question, max);
+        if (select >= 0 && select < max) {
+            return select;
+        } else {
+            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
+        }
     }
 }
