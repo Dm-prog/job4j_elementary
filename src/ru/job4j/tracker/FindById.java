@@ -1,8 +1,6 @@
 package ru.job4j.tracker;
 
-public class CreateFindById implements UserAction {
-    private static String msg = "question";
-
+public class FindById implements UserAction {
     @Override
     public String name() {
         return "=== Find item by Id ====";
@@ -10,7 +8,7 @@ public class CreateFindById implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        String id = input.askStr(msg);
+        String id = input.askStr("question");
         Item found = tracker.findById(id);
         if (found != null) {
             System.out.println(found);

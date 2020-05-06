@@ -4,7 +4,7 @@ public class DeleteItem implements UserAction {
 
     @Override
     public String name() {
-        return null;
+        return "=== Delete Item ===";
     }
 
     @Override
