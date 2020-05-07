@@ -3,7 +3,6 @@ package ru.job4j.stragery;
 import java.util.StringJoiner;
 
 public class Triangle implements Shape {
-    StringBuilder sb = new StringBuilder();
     @Override
     public String draw() {
         StringJoiner pic = new StringJoiner(System.lineSeparator());
