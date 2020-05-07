@@ -11,6 +11,6 @@ public class Paint {
     }
 
     public void draw(Shape shape) {
-        System.out.println(shape.draw());
+        System.out.print(shape.draw());
     }
 }
