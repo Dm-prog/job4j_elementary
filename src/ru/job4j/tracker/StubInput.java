@@ -15,11 +15,11 @@ public class StubInput implements Input {
 
     @Override
     public int askInt(String question) {
-        return 0;
+        return Integer.valueOf(askStr(question));
     }
 
     @Override
     public int askInt(String question, int max) {
-        return askInt(question, max);
+        return askInt(question);
     }
 }
