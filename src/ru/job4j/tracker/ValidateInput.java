@@ -1,7 +1,7 @@
 
 package ru.job4j.tracker;
 
-public class ValidateInput extends ConsoleInput implements Input {
+public class ValidateInput extends ConsoleInput {
 
     @Override
     public int askInt(String question) {
