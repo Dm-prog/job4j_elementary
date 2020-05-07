@@ -25,6 +25,16 @@ public class ValidateInputTest {
 
     @Test
     public void whenMaxInput() {
-
+        ByteArrayOutputStream mem = new ByteArrayOutputStream();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(mem));
+        String[] data = {"10", "1"};
+        ValidateInput input = new ValidateStubInput(data);
+        input.askInt("Enter", 1);
+        assertThat(
+                mem.toString(),
+                is(String.format("Please enter validate data again.%n"))
+        );
+        System.setOut(out);
     }
 }
