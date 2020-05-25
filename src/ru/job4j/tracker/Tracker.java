@@ -1,9 +1,10 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
-public class Tracker {
+public class Tracker implements ListOfItem {
 
     private final Item[] items = new Item[100];
 
@@ -76,5 +77,16 @@ public class Tracker {
             System.arraycopy(items, start, items, distPos, size);
         }
         return true;
+    }
+
+    @Override
+    public List<Item> items(List<Item> listOfItems) {
+        for (int index = 0; index < items.length; index++) {
+            items[index] = new Item("");
+            Item value = items[index];
+            listOfItems.add(value);
+        }
+        //listOfItems = Arrays.asList(items);
+        return listOfItems;
     }
 }
