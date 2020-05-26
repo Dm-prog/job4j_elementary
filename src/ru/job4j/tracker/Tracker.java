@@ -1,42 +1,59 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class Tracker implements ListOfItem {
+public class Tracker {
 
-    private final Item[] items = new Item[100];
+    //private final Item[] items = new Item[100];
+    private final List<Item> items = new ArrayList<>();
 
     private int position = 0;
 
     public Item add(Item item) {
         item.setId(generateId());
-        this.items[position++] = item;
+        this.items.set(position++, item);
         return item;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+//    public Item[] findAll() {
+//        return Arrays.copyOf(items, position);
+//    }
+
+    public List<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
+//    public Item[] findByName(String key) {
+//        int size = 0;
+//        Item[] result = new Item[position];
+//        for (int index = 0; index < position; index++) {
+//            Item item = items[index];
+//            if (item.getName().equals(key)) {
+//                result[size] = item;
+//                size++;
+//            }
+//        }
+//        Arrays.copyOf(result, size);
+//        return result;
+//    }
+
+    public List<Item> findByName(String key) {
         int size = 0;
-        Item[] result = new Item[position];
+        List<Item> result = new ArrayList<>();
         for (int index = 0; index < position; index++) {
-            Item item = items[index];
+            Item item = items.get(index);
             if (item.getName().equals(key)) {
-                result[size] = item;
+                result.add(item);
                 size++;
             }
         }
-        Arrays.copyOf(result, size);
+        Collections.copy(result, items);
         return result;
     }
 
     public Item findById(String id) {
         int index = indexOf(id);
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
 
     private String generateId() {
@@ -47,7 +64,7 @@ public class Tracker implements ListOfItem {
     private int indexOf(String id) {
         int rsl = -1;
         for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
+            if (items.get(index).getId().equals(id)) {
                 rsl = index;
                 break;
             }
@@ -60,7 +77,7 @@ public class Tracker implements ListOfItem {
         int index = indexOf(id);
         if (index != -1) {
             item.setId(id);
-            items[index] = item;
+            items.add(item);
             result = true;
         }
         return result;
@@ -72,21 +89,10 @@ public class Tracker implements ListOfItem {
             int start = index + 1;
             int distPos = index;
             int size = position - index;
-            items[position - 1] = null;
+            items.add(null);
             position--;
             System.arraycopy(items, start, items, distPos, size);
         }
         return true;
-    }
-
-    @Override
-    public List<Item> items(List<Item> listOfItems) {
-        for (int index = 0; index < items.length; index++) {
-            items[index] = new Item("");
-            Item value = items[index];
-            listOfItems.add(value);
-        }
-        //listOfItems = Arrays.asList(items);
-        return listOfItems;
     }
 }
