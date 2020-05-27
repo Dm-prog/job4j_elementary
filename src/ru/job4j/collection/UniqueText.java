@@ -10,14 +10,15 @@ public class UniqueText {
         HashSet<String> check = new HashSet<>();
         for (String orig : origin) {
             check.add(orig);
-            for (String dup : text) {
-                if (dup.contains(orig)) {
-                    return true;
-                } else {
-                    return false;
-                }
+        }
+        for (String dup : text) {
+            if (check.contains(dup)) {
+                return true;
+            } else {
+                return false;
             }
         }
         return rsl;
     }
 }
+
