@@ -2,6 +2,8 @@ package ru.job4j.bank;
 
 import java.util.*;
 
+import static org.hamcrest.core.Is.is;
+
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
     List<Account> list = new ArrayList<>();
@@ -42,6 +44,11 @@ public class BankService {
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String dеstRequisite, double amount) {
+        for (Map.Entry<User, List<Account>> pair : users.entrySet()) {
+            if (pair.getValue().contains(srcRequisite) && srcRequisite != null) {
+
+            }
+        }
 
         boolean rsl = false;
         return rsl;
