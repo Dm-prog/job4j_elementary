@@ -1,24 +1,21 @@
 package ru.job4j.bank;
 
-import java.util.*;
-
-import static org.hamcrest.core.Is.is;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
     List<Account> list = new ArrayList<>();
 
     public void addUser(User user) {
-        if (!users.containsKey(user)) {
-            users.put(user, new ArrayList<>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
-        for (User user : users.keySet()) {
-            if (findByPassport(passport).equals(user)) {
-                list.add(account);
-            }
+        if (!(findByPassport(passport) == null && users.containsValue(account))) {
+            list.add(account);
         }
     }
 
@@ -31,26 +28,29 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        for (Map.Entry<User, List<Account>> pair : users.entrySet())
-            if (pair.getKey().equals(findByPassport(passport))) {
-                for (Account account : list) {
-                    if (account.getRequisite().equals(requisite)) {
-                        return account;
-                    }
+        if (findByPassport(passport) != null) {
+            for (Account account : list) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
                 }
             }
+
+        }
         return null;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String dеstRequisite, double amount) {
-        for (Map.Entry<User, List<Account>> pair : users.entrySet()) {
-            if (pair.getValue().contains(srcRequisite) && srcRequisite != null) {
-
-            }
-        }
-
         boolean rsl = false;
+        Account account1 = findByRequisite(srcPassport, srcRequisite);
+        Account account2 = findByRequisite(destPassport, dеstRequisite);
+
+        if (account1 != null && account2 != null) {
+            account1.setBalance(amount - account2.getBalance());
+            account2.setBalance(account2.getBalance() + amount);
+        } else {
+            rsl = true;
+        }
         return rsl;
     }
 }
