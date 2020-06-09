@@ -44,12 +44,13 @@ public class BankService {
         boolean rsl = false;
         Account account1 = findByRequisite(srcPassport, srcRequisite);
         Account account2 = findByRequisite(destPassport, dеstRequisite);
-
-        if (account1 != null && account2 != null) {
-            account1.setBalance(amount - account2.getBalance());
-            account2.setBalance(account2.getBalance() + amount);
-        } else {
-            rsl = true;
+        if (amount > 0 && account1.getBalance() >= amount) {
+            if (account1 != null && account2 != null) {
+                account1.setBalance(amount - account2.getBalance());
+                account2.setBalance(account2.getBalance() + amount);
+            } else {
+                rsl = true;
+            }
         }
         return rsl;
     }
