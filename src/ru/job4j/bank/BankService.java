@@ -34,7 +34,6 @@ public class BankService {
                     return account;
                 }
             }
-
         }
         return null;
     }
@@ -46,7 +45,7 @@ public class BankService {
         Account account2 = findByRequisite(destPassport, dеstRequisite);
         if (amount > 0 && account1.getBalance() >= amount) {
             if (account1 != null && account2 != null) {
-                account1.setBalance(amount - account2.getBalance());
+                account1.setBalance(account1.getBalance() - amount);
                 account2.setBalance(account2.getBalance() + amount);
             } else {
                 rsl = true;
