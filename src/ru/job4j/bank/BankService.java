@@ -47,7 +47,6 @@ public class BankService {
             if (account1 != null && account2 != null) {
                 account1.setBalance(account1.getBalance() - amount);
                 account2.setBalance(account2.getBalance() + amount);
-            } else {
                 rsl = true;
             }
         }
