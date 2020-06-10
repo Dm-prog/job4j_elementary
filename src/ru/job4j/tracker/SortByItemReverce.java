@@ -1,9 +1,11 @@
 package ru.job4j.tracker;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public class SortByItem implements Comparator<Item> {
-
+public class SortByItemReverce implements Comparator<Item> {
     public static void main(String[] args) {
         List<Item> items = Arrays.asList(
                 new Item("Anna"),
@@ -11,6 +13,7 @@ public class SortByItem implements Comparator<Item> {
                 new Item("Alex")
         );
         Collections.sort(items, new SortByItem());
+        Collections.reverse(items);
         System.out.println(items);
     }
 
