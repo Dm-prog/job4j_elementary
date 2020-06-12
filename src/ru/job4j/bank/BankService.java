@@ -16,7 +16,7 @@ public class BankService {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> list = users.get(user);
-            if (list.contains(account)) {
+            if (!list.contains(account)) {
                 users.get(user).add(account);
             }
         }
