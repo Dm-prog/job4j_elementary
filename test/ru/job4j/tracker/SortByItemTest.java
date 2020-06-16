@@ -38,5 +38,4 @@ public class SortByItemTest {
         expectedItems.add(new Item("Anna"));
         assertEquals(expectedItems, is(items));
     }
-
 }
