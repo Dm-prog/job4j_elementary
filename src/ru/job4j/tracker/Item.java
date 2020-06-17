@@ -31,8 +31,8 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return id.equals(item.id) &&
-                name.equals(item.name);
+        return Objects.equals(id, item.id) &&
+                Objects.equals(name, item.name);
     }
 
     @Override

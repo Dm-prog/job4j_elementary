@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 
 public class SortByItemTest {
@@ -22,7 +21,7 @@ public class SortByItemTest {
         expectedItems.add(new Item("Anna"));
         expectedItems.add(new Item("Ivan"));
         expectedItems.add(new Item("Victor"));
-        assertEquals(expectedItems, is(items));
+        assertEquals(expectedItems, items);
     }
 
     @Test
@@ -36,6 +35,6 @@ public class SortByItemTest {
         expectedItems.add(new Item("Victor"));
         expectedItems.add(new Item("Ivan"));
         expectedItems.add(new Item("Anna"));
-        assertEquals(expectedItems, is(items));
+        assertEquals(expectedItems, items);
     }
 }
