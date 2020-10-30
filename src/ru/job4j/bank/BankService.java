@@ -4,21 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
+//        users.entrySet().stream().collect(Collectors.toMap(
+//                        e -> user,
+//                        e -> new ArrayList()));
+
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> list = users.get(user);
-            if (!list.contains(account)) {
-                users.get(user).add(account);
-            }
-        }
+//        User user = findByPassport(passport);
+//        if (user != null) {
+//            List<Account> list = users.get(user);
+//            if (!list.contains(account)) {
+//                users.get(user).add(account);
+//            }
+//        }
     }
 
     public User findByPassport(String passport) {
