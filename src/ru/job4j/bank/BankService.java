@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
+
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
     }
@@ -26,14 +27,14 @@ public class BankService {
 //                return user;
 //            }
 
-        return users.entrySet().stream()
-                .filter(x-> x.getKey().getPassport().equals(passport))
-                .map(x->x.getValue()).collect(Collectors.groupingBy(User::getPassport));
+        return users.keySet().stream()
+                .filter(k -> k.getPassport().equals(passport))
+                .findFirst().orElse(null);
 //        return null;
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
+        //User user = findByPassport(passport);
         Account result = null;
 //        if (user != null) {
 //            for (Account account : users.get(user)) {
@@ -43,11 +44,8 @@ public class BankService {
 //                }
 //            }
 //        }
-        users.entrySet().stream()
-//                .flatMap(Stream::ofNullable)
-                .flatMap(list -> list.getValue().stream())
-                .filter(userRequisite -> userRequisite.getRequisite().equals(requisite));
-        return result;
+
+        return users.keySet().stream().filter().findFirst();
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
