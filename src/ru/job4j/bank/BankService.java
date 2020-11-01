@@ -26,16 +26,16 @@ public class BankService {
 //            if (user.getPassport().equals(passport)) {
 //                return user;
 //            }
+//        return null;
 
         return users.keySet().stream()
                 .filter(k -> k.getPassport().equals(passport))
                 .findFirst().orElse(null);
-//        return null;
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        //User user = findByPassport(passport);
-        Account result = null;
+        User user = findByPassport(passport);
+//        Account result = null;
 //        if (user != null) {
 //            for (Account account : users.get(user)) {
 //                if (account.getRequisite().equals(requisite)) {
@@ -44,8 +44,10 @@ public class BankService {
 //                }
 //            }
 //        }
-
-        return users.keySet().stream().filter().findFirst();
+//        return result;
+        return users.get(user).stream()
+                .filter(v -> v.getRequisite().equals(requisite))
+                .findFirst().orElse(null);
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
