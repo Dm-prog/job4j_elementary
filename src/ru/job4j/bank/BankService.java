@@ -30,7 +30,9 @@ public class BankService {
         Optional<User> rsl = Optional.empty();
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
-                rsl = Optional.of(user);
+                if (rsl.isPresent()) {
+                    rsl.get();
+                }
                 break;
             }
         }
@@ -54,7 +56,9 @@ public class BankService {
         Optional user = findByPassport(passport);
         for (Account account : users.get(user)) {
             if (account.getRequisite().equals(requisite)) {
-                rsl = Optional.of(account);
+                if (rsl.isPresent()) {
+                    rsl.get();
+                }
                 break;
             }
         }
