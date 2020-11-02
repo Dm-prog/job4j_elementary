@@ -30,9 +30,7 @@ public class BankService {
         Optional<User> rsl = Optional.empty();
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
-                if (rsl.isPresent()) {
-                    rsl.get();
-                }
+                rsl = Optional.of(user);
                 break;
             }
         }
@@ -56,9 +54,7 @@ public class BankService {
         Optional user = findByPassport(passport);
         for (Account account : users.get(user)) {
             if (account.getRequisite().equals(requisite)) {
-                if (rsl.isPresent()) {
-                    rsl.get();
-                }
+                rsl = Optional.of(account);
                 break;
             }
         }
@@ -68,8 +64,12 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        Optional srcAccount = findByRequisite(srcPassport, srcRequisite);
+        Optional srcAccount = findByRequisite(srcPassport, srcRequisite);  // получили 2 опшионал
         Optional destAccount = findByRequisite(destPassport, destRequisite);
+        if (srcAccount.isPresent() && destAccount.isPresent()) { //проверили что там значение есть с помощью isPresent()
+            srcAccount.get(); //получили само значение с помощью get()
+            destAccount.get();
+        }
         if (srcAccount != null && srcAccount.getBalance() >= amount && destAccount != null) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
