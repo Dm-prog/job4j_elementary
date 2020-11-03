@@ -26,10 +26,16 @@ public class Analyze {
     }
 
     public static Tuple bestStudent(Stream<Pupil> stream) {
-        return stream.collect(Collectors.averagingDouble());
+        return stream.map(s -> new Tuple(s.getName(), stream.flatMap(num -> num.getSubjects().stream())
+                .mapToInt(Subject::getScore).sum()))
+                .findFirst().orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        return stream.max(new Tuple());
+        return stream.flatMap(num -> num.getSubjects().stream())
+                .collect(Collectors.groupingBy(Subject::getName, Collectors.summingDouble(Subject::getScore)))
+                .entrySet().stream()
+                .map(s -> new Tuple(s.getKey(), s.getValue()))
+                .findFirst().orElse(null);
     }
 }
