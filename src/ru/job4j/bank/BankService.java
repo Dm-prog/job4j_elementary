@@ -70,7 +70,7 @@ public class BankService {
             srcAccount.get(); //получили само значение с помощью get()
             destAccount.get();
         }
-        if (srcAccount != null && srcAccount.getBalance() >= amount && destAccount != null) {
+        if (srcAccount != null && srcAccount.get().getBalance() >= amount && destAccount != null) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
             rsl = true;
