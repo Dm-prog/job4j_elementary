@@ -52,10 +52,12 @@ public class BankService {
     public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<Account> rsl = Optional.empty();
         Optional<User> user = findByPassport(passport);
-        for (Account account : users.get(user.get())) {
-            if (account.getRequisite().equals(requisite)) {
-                rsl = Optional.of(account);
-                break;
+        if (user.isPresent()) {
+            for (Account account : users.get(user.get())) {
+                if (account.getRequisite().equals(requisite)) {
+                    rsl = Optional.of(account);
+                    break;
+                }
             }
         }
         return rsl;
