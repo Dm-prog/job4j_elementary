@@ -1,5 +1,7 @@
 package ru.job4j.pojo;
 
+import java.util.Arrays;
+
 public class Shop {
     public Product[] delete(Product[] products, int index) {
         for (int i = index; i < products.length - 1; i++) {
@@ -16,11 +18,10 @@ public class Shop {
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
 
-        System.out.println(shop.delete(new Product[] {products[0],
-                products[1], null, products[2], null}, 3));
+        System.out.println(Arrays.toString(shop.delete(new Product[]{products[0],
+                products[1], null, products[2], null}, 3)));
 
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
+        for (Product product : products) {
             if (product != null) {
                 System.out.println(product.getName());
             } else {
@@ -32,8 +33,7 @@ public class Shop {
         System.out.println("Удаляем значение из ячейки с индексом 1");
         products[1] = null;
 
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
+        for (Product product : products) {
             if (product != null) {
                 System.out.println(product.getName());
             } else {
@@ -45,8 +45,7 @@ public class Shop {
         System.out.println("Записываем  в ячейку с индексом 1 значение ячейки с индексом 2 и удаляем значение из ячейки с индексом 2");
         products[1] = products[2];
         products[2] = null;
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
+        for (Product product : products) {
             if (product != null) {
                 System.out.println(product.getName());
             } else {
